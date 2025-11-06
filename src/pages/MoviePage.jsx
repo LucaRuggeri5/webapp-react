@@ -13,8 +13,12 @@ import ReviewCard from "../components/reviewCard"
 //import form comp
 import FormReview from "../components/FormReview"
 
+import { useGlobal } from "../contexts/ContextGlobal"
 
 const MoviePage = () => {
+
+    // estrapoliamo da context var di stato
+    const { setIsLoading } = useGlobal();
 
     const [movie, setMovie] = useState();
 
@@ -26,12 +30,14 @@ const MoviePage = () => {
 
     // prepariamo funzione per la chiamata axios
     const fecthMovie = () => {
+        setIsLoading(true);
         axios.get('http://localhost:3000/movies/' + id)
             .then(response => { setMovie(response.data) })
             .catch(error => {
                 console.log(error)
                 if (error.status === 404) redirect('/404')
             })
+            .finally(() => { setIsLoading(false) })
     }
 
     // faccio partire la chiamata

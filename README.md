@@ -10,3 +10,32 @@ Creiamo un layout di base per la nostra applicazione ed impostiamo le rotte per 
 Creiamo 2 pagine:
 La home, in cui mostreremo la lista dei film
 La pagina di dettaglio di un singolo film
+
+MILESTONE 3
+
+Configuriamo l’app di backend (repo webapp-express) a ricevere chiamate dalla nostra applicazione React, installando e impostando il middleware CORS
+Proviamo quindi ad effettuare una chiamata Ajax dalla home del progetto React, per ottenere la lista dei libri
+
+MILESTONE 4
+
+In ultimo, effettuiamo una chiamata AJAX dalla pagina di dettaglio per ottenere il dettaglio di un singolo film, comprese le sue recensioni
+
+
+Miglioriamo l’esperienza dell’utente inserendo 
+
+MILESTONE 1 (BACKEND)
+
+Predisponiamo un’API per salvare nel database una nuova recensione legata ad un film
+Testiamola su postman e verifichiamo che nel DB venga effettivamente inserita una nuova recensione
+
+MILESTONE 2 (FRONTEND)
+
+Creiamo un componente che contenga il form per le recensioni
+Inseriamo questo componente nella pagina di dettaglio del film
+All’invio del form, la nuova recensione viene salvata sul database e visualizzata nella pagina, in fondo alle altre
+
+Concludiamo migliorando l’esperienza sulla nostra SPA, inserendo un loader.
+
+creiamo un componente loader
+Questo componente deve poter apparire su qualunque pagina della nostra app.
+Creiamo e sfruttiamo un Context per dare la possibilità ad ogni componente di attivare o disattivare il loader sulla propria pagina

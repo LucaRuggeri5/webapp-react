@@ -7,18 +7,24 @@ import axios from "axios"
 // import state e effetc
 import { useState, useEffect } from "react"
 
+import { useGlobal } from "../contexts/ContextGlobal"
 
 //pagina home
 const HomePage = () => {
+
+    // estrapoliamo da context var di stato
+    const { setIsLoading } = useGlobal();
 
     //variabile di stato
     const [movies, setMovies] = useState([]);
 
     //chiamata axios
     const fecthMovies = () => {
+        setIsLoading(true);
         axios.get('http://localhost:3000/movies')
             .then(response => { setMovies(response.data) })
             .catch(error => { console.log(error) })
+            .finally(() => { setIsLoading(false) })
     }
 
     // faccio partire la chiamata a primo montaggio comp
@@ -39,7 +45,7 @@ const HomePage = () => {
         <>
             <div className="container">
                 <h1 className="text-warning pt-5">Movies</h1>
-                <h2 className="text-white pt-2"><i>Best Movies ever</i></h2>
+                <h2 className="text-white pt-2"><i>Filmoni</i></h2>
                 <div className="d-flex flex-wrap mt-4 gap-3 pb-5">
                     {moviesRender()}
                 </div>

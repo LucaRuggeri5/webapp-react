@@ -9,19 +9,23 @@ import ErrorNotFound from "./pages/ErrorNotFound"
 // import degli elementi React di gestione router
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
+import { GlobalProvider } from "./contexts/ContextGlobal"
+
 function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<DefLayout />}>
-            <Route index element={<HomePage />} />
-            <Route path='/movies/:id' element={<MoviePage />} />
-            <Route path='*' element={<ErrorNotFound />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <GlobalProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<DefLayout />}>
+              <Route index element={<HomePage />} />
+              <Route path='/movies/:id' element={<MoviePage />} />
+              <Route path='*' element={<ErrorNotFound />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </GlobalProvider>
     </>
   )
 }
